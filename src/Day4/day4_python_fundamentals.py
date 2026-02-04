@@ -26,13 +26,13 @@ print("Customer Names:",purchases.keys())
 
 print("Alice's purchases",purchases.get("Alice",0))
 
-'''n=int(input("Enter number of customers:"))
+n=int(input("Enter number of customers:"))
 user_purchases={}
 for _ in range(n):
     name=input("Enter customer name:")
     amount=int(input(f"Enter purchase amount for {name}:"))
     user_purchases[name]=amount
-print("Customer Purchase Data:",user_purchases)'''
+print("Customer Purchase Data:",user_purchases)
 
 top_customer=max(purchases,key=purchases.get)
 print("Top Spending Customer:",top_customer)
