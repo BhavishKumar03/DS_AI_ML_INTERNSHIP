@@ -1,0 +1,3 @@
+Name: Bhavish, Daily Goal: Python File Handling
+Name: Adithya, Daily Goal: Reading data from CSV and Excel files. 
+Name: Dilan, Daily Goal: Work on internship task
