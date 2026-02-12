@@ -1,0 +1,16 @@
+OrderID,CustomerName,Age,Location,Price,PaymentMethod,Date
+1001,Amit,25," New York","$2500",UPI,2024-01-05
+1002,Sara,,"new york ","$1800",Card,2024/01/10
+,John,30,"NEW YORK","$2000",Cash,2024-02-01
+1004,Priya,22," New York ","$2200",Card,
+1005,,28,"new york",,,
+1006,David,,"LOS ANGELES ","$3000",UPI,2024-03-05
+1006,David,,"LOS ANGELES ","$3000",UPI,2024-03-05
+1008,Meena,35," los angeles","$1500",Cash,2024-03-10
+1009,Ali,,Los Angeles,"$2700",Card,2024-04-01
+,Riya,26,"CHICAGO ","$2600",UPI,05-04-2024
+1010,Sam,29," chicago","$2200",Card,2024-04-10
+1011,Neha,,Chicago ,"$1800",UPI,2024-04-15
+1011,Neha,,Chicago ,"$1800",UPI,2024-04-15
+1012,Rahul,31," NEW YORK ","$2400",Cash,2024-04-20
+,Farah,27," los angeles ","$2100",Card,2024-04-25
