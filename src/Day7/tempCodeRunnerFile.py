@@ -1,10 +1,5 @@
-filename = input("Enter the filename to open: ")
-
-try:
-    with open(filename, "r") as file:
-        content = file.read()
-        print("\nFile Content:\n")
-        print(content)
-
-except FileNotFoundError:
-    print("Oops! That file doesn't exist yet.")
+name = input("Enter your name: ")
+goal = input("Enter your Daily Goal: ")
+with open("journal.txt", "a") as file:
+    file.write(f"Name: {name}, Daily Goal: {goal}\n")
+print("Saved successfully!")

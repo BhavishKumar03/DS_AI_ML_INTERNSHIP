@@ -9,7 +9,7 @@ print(student)
 
 marks={"Maths":80,"Science":75,"English":85}
 print(marks.get("Maths"))
-print(marks.get("History",0))
+print(marks.get("Science",0))
 for subject,score in marks.items():
     print(subject,score)
 marks.update({"History":70})

@@ -198,6 +198,18 @@ class Robot:
         
         return False
     
+    def detect_obstacle_ahead(self, scan_distance=50):
+        """Detect if there's an obstacle within scan_distance meters ahead"""
+        obstacles = ['none', 'human', 'wall']
+        obstacle_ahead = random.choice(obstacles)
+        distance_to_obstacle = random.randint(10, scan_distance)
+        
+        if obstacle_ahead in ['human', 'wall']:
+            print(f"\n🔍 SENSOR ALERT: {obstacle_ahead.upper()} detected {distance_to_obstacle}m ahead!")
+            return obstacle_ahead, distance_to_obstacle
+        
+        return 'none', None
+    
     def simulate_movement(self):
         """Main movement simulation logic"""
         print(f"\n{'='*60}")
@@ -205,29 +217,8 @@ class Robot:
         print(f"{'='*60}")
         print(f"Target Distance: {self.target_distance} meters")
         print(f"Starting Position: {self.current_position}m")
+        print(f"Sensor Scanning Range: 50 meters ahead")
         print(f"\n")
-        
-        # Get user input
-        while True:
-            try:
-                obstacle_input = input("Is there an obstacle ahead? (none/human/wall): ").strip()
-                if obstacle_input.lower() in ['none', 'human', 'wall']:
-                    break
-                print("❌ Invalid input. Please enter 'none', 'human', or 'wall'.")
-            except Exception as e:
-                print(f"Error: {e}")
-                continue
-        
-        # Determine speed and movement strategy
-        speed_status = self.determine_speed(obstacle_input)
-        print(f"\n📊 Speed Status: {speed_status} ({self.speed} km/h)")
-        
-        # Handle obstacles
-        if not self.handle_obstacle(obstacle_input):
-            print("⚠️  Unable to proceed!")
-            return False
-        
-        print(f"\n🚀 {self.name} starting movement with {self.current_direction} direction...\n")
         
         checkpoint_created = False
         movement_step = 0
@@ -236,10 +227,27 @@ class Robot:
         while self.current_position < self.target_distance:
             movement_step += 1
             
+            # Detect obstacles ahead using sensor (50 meters scan)
+            obstacle_input, distance_to_obstacle = self.detect_obstacle_ahead(scan_distance=50)
+            
+            if obstacle_input != 'none':
+                print(f"[Step {movement_step}] Obstacle ahead detected at {distance_to_obstacle}m!")
+            else:
+                print(f"\n[Step {movement_step}] Path clear - no obstacles detected")
+            
+            # Determine speed and movement strategy based on obstacle
+            speed_status = self.determine_speed(obstacle_input)
+            print(f"📊 Speed Status: {speed_status} ({self.speed} km/h)")
+            
+            # Handle obstacles
+            if not self.handle_obstacle(obstacle_input):
+                print("⚠️  Unable to proceed!")
+                return False
+            
             # Make decision for next movement
             remaining_distance = self.target_distance - self.current_position
             
-            # Nested IF conditions for decision making
+            # Nested IF conditions for decision making based on speed status
             if speed_status == "NORMAL":
                 if remaining_distance > 200:
                     move_distance = 50
@@ -265,7 +273,7 @@ class Robot:
             else:  # CAUTIOUS or STOPPED
                 if self.current_direction == "FORWARD":
                     move_distance = 15
-                    action = "MOVING CAUTIOUSLY"
+                    action = "MOVING FORWARD (Cautiously)"
                 elif self.current_direction == "LEFT":
                     move_distance = 12
                     action = "MOVING LEFT"
@@ -298,17 +306,6 @@ class Robot:
             self.movement_log.append(status_msg)
             
             time.sleep(0.5)  # Small delay for simulation effect
-            
-            # Allow checkpoint management every 3 steps (with error handling)
-            if movement_step % 3 == 0:
-                try:
-                    manage = input("\nManage checkpoints? (y/n): ").strip().lower()
-                    if manage == 'y':
-                        while not self.interactive_checkpoint_management():
-                            pass
-                except EOFError:
-                    # Handle end of input gracefully
-                    pass
             
             # Override if position exceeds target
             if self.current_position >= self.target_distance:
@@ -424,15 +421,7 @@ def main():
     else:
         print("\n❌ Journey failed to complete!")
         
-    # Ask to run again
-    try:
-        again = input("\nDo you want to run another simulation? (yes/no): ").strip().lower()
-        if again in ['yes', 'y']:
-            main()
-        else:
-            print("\n👋 Thank you for using RoboController 1.0!")
-    except EOFError:
-        print("\n👋 Thank you for using RoboController 1.0!")
+    print("\n👋 Thank you for using RoboController 1.0!")
 
 
 if __name__ == "__main__":
