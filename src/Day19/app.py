@@ -1,1 +1,1 @@
-print("Initial version")
+print("Main version")
