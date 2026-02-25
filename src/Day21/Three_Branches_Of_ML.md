@@ -12,8 +12,7 @@ Each branch differs based on how data is provided and how learning happens.
 
 ##  1. Supervised Learning
 
-Supervised Learning uses **labeled datasets**, where each input has a known correct output. The model learns relationships between features and targets to predict outcomes for new data. It is mainly applied to **classification and regression problems**.
-
+Supervised Learning is a Machine Learning approach where the model is trained using **labeled data**, meaning the correct output is already known.The algorithm learns the relationship between input features and target values during training. After learning, it can predict outputs for new unseen data.
 ### Examples
 - Spam Email Detection  
 - House Price Prediction  
