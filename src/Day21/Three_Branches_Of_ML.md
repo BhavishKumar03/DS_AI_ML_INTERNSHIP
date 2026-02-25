@@ -12,7 +12,6 @@ Each branch differs based on how data is provided and how learning happens.
 
 ##  1. Supervised Learning
 
-### Explanation (3 Lines)
 Supervised Learning uses **labeled datasets**, where each input has a known correct output.  
 The model learns relationships between features and targets to predict outcomes for new data.  
 It is mainly applied to **classification and regression problems**.
@@ -27,7 +26,6 @@ It is mainly applied to **classification and regression problems**.
 
 ##  2. Unsupervised Learning
 
-### Explanation (3 Lines)
 Unsupervised Learning works with **unlabeled data**, meaning no predefined answers exist.  
 The algorithm discovers hidden structures, similarities, or clusters automatically.  
 It is commonly used for **pattern discovery and data exploration**.
@@ -42,7 +40,6 @@ It is commonly used for **pattern discovery and data exploration**.
 
 ##  3. Reinforcement Learning
 
-### Explanation (3 Lines)
 Reinforcement Learning trains an agent through interaction with an environment using rewards and penalties.  
 The system learns optimal actions via trial and error to maximize cumulative rewards.  
 It is suitable for **decision-making and sequential learning problems**.
@@ -55,7 +52,7 @@ It is suitable for **decision-making and sequential learning problems**.
 
 ---
 
-## 📊 Structured Comparison Table
+##  Structured Comparison Table
 
 | Feature | Supervised Learning | Unsupervised Learning | Reinforcement Learning |
 |----------|---------------------|-----------------------|------------------------|
